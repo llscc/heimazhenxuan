@@ -11,7 +11,7 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import 'virtual:svg-icons-register'
 
 // 引入自定义插件对象
-import gloablComponent from './components/index';
+import gloablComponent from './components/index'
 
 const app = createApp(App)
 
@@ -19,10 +19,8 @@ app.use(ElementPlus, {
   locale: zhCn,
 })
 
-app.use(gloablComponent);
+app.use(gloablComponent)
 // 引入全局样式
 import '@/styles/index.scss'
-
-
 
 app.mount('#app')
