@@ -1,9 +1,14 @@
 <template>
   <div>
-    <h1>i am app</h1>
+    <router-view></router-view>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import {reqLogin} from './api/user'
+
+
+</script>
 
 <style lang="scss" scoped></style>
