@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
-import type { loginForm,loginResponseData } from '@/api/user/type'
+import type { loginForm, loginResponseData } from '@/api/user/type'
 import { reqLogin } from '@/api/user'
 import type { UserState } from './types/type'
 // 引入操作本地存储的方法
-import { SET_TOKEN,GET_TOKEN } from '@/utils/token'
+import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
 
 let useUserStore = defineStore('User', {
-  state: ():UserState => {
+  state: (): UserState => {
     return {
       token: GET_TOKEN(),
     }
@@ -17,7 +17,7 @@ let useUserStore = defineStore('User', {
       let result: loginResponseData = await reqLogin(data)
       //console.log(result)
       if (result.code === 200) {
-        this.token = (result.data.token) as string
+        this.token = result.data.token as string
         // 本地持久化存储
         SET_TOKEN(result.data.token as string)
         return 'ok'
