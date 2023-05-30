@@ -1,31 +1,64 @@
 <template>
+  <template v-for="(item, index) in menuList" :key="item.path">
+    <!-- 没有子路由 -->
+    <template v-if="!item.children">
+      <el-menu-item
+        :index="item.path"
+        v-if="!item.meta.hidden"
+        @click="goRoute"
+      >
+        <template #title>
+          <el-icon>
+            <component :is="item.meta.icon"></component>
+          </el-icon>
+          <span>{{ item.meta.title }}</span>
+        </template>
+      </el-menu-item>
+    </template>
 
-           <p>{{ menuList }}</p>
-           <template v-for="(item, index) in menuList" :key="item.path">
-            <!-- 没有子路由 -->
-            <el-menu-item v-if="!item.children" >
-            <template #title>
-                <span>tubiao &nbsp;</span>
-                <span>{{ item.meta.title }}</span>
-            </template>
-            </el-menu-item>
-            <!-- 只有一个子路由 -->
-            <el-menu-item v-if="item.children&&item.children.length==1">
-                <template #title>
-                <span>tubiao &nbsp;</span>
-                <span>{{ item.children[0].meta.title }}</span>
-            </template>
-            </el-menu-item>
-            <!-- 有多个子路由 -->
-            <el-sub-menu>
+    <!-- 只有一个子路由 -->
+    <template v-if="item.children && item.children.length == 1">
+      <el-menu-item
+        :index="item.children[0].path"
+        v-if="!item.children[0].meta.hidden"
+      >
+        <template #title>
+          <el-icon>
+            <component :is="item.children[0].meta.icon"></component>
+          </el-icon>
+          <span>{{ item.children[0].meta.title }}</span>
+        </template>
+      </el-menu-item>
+    </template>
 
-            </el-sub-menu>
+    <!-- 有多个子路由 -->
+    <el-sub-menu
+      :index="item.path"
+      v-if="item.children && item.children.length > 1"
+    >
+      <template #title>
+        <el-icon>
+          <component :is="item.meta.icon"></component>
+        </el-icon>
+        <span>{{ item.meta.title }}</span>
+      </template>
 
-            </template>
+      <Menu :menuList="item.children"></Menu>
+    </el-sub-menu>
+  </template>
 </template>
 
 <script setup lang="ts">
 defineProps(['menuList'])
+
+const goRoute = (vc: any) => {
+  console.log(vc)
+  // router.push({path:vc.$route.path})
+}
 </script>
 
-<style scoped></style>
+<script lang="ts">
+export default {
+  name: 'Menu',
+}
+</script>
