@@ -2,3 +2,19 @@
 @import './reset.scss';
 
 // 引入全局变量
+
+//滚动条外观
+::-webkit-scrollbar{
+    width: 10px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track{
+    background: $base-menu-background;
+}
+
+::-webkit-slider-thumb{
+    width: 10px;
+    border-radius: 10px;
+    background-color: yellow;
+}

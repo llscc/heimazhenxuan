@@ -4,11 +4,13 @@ import { reqLogin } from '@/api/user'
 import type { UserState } from './types/type'
 // 引入操作本地存储的方法
 import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
+import { constantRoute } from '@/router/routes'
 
 let useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN(),
+      menuRoutes:constantRoute,
     }
   },
   actions: {
