@@ -5,7 +5,12 @@
       <Logo />
 
       <el-scrollbar class="scrollbar">
-        <el-menu :default-active="$route.path" background-color="#001529" text-color="white" active-text-color="yellowgreen">
+        <el-menu
+          :default-active="$route.path"
+          background-color="#001529"
+          text-color="white"
+          active-text-color="yellowgreen"
+        >
           <Menu :menuList="useStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
@@ -16,13 +21,13 @@
     </div>
     <!-- 内容展示区域 -->
     <div class="layout_main">
-      <Main> </Main>
+      <Main></Main>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import Logo from './logo/index.vue'
 
 import Menu from './menu/index.vue'

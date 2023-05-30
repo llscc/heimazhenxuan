@@ -28,7 +28,7 @@ export const constantRoute = [
           hidden: false,
           icon: 'HomeFilled',
         },
-      }
+      },
     ],
   },
   {
@@ -59,7 +59,7 @@ export const constantRoute = [
           title: '用户管理',
           hidden: false,
           icon: 'User',
-        }
+        },
       },
       {
         path: '/acl/role',
@@ -69,7 +69,7 @@ export const constantRoute = [
           title: '角色管理',
           hidden: false,
           icon: 'UserFilled',
-        }
+        },
       },
       {
         path: '/acl/permission',
@@ -79,12 +79,12 @@ export const constantRoute = [
           title: '菜单管理',
           hidden: false,
           icon: 'Monitor',
-        }
-      }
-    ]
+        },
+      },
+    ],
   },
-  { 
-    path:'/product',
+  {
+    path: '/product',
     component: () => import('@/layout/index.vue'),
     name: 'Product',
     meta: {
@@ -101,7 +101,7 @@ export const constantRoute = [
           title: '品牌管理',
           hidden: false,
           icon: 'ShoppingCartFull',
-        }
+        },
       },
       {
         path: '/product/attr',
@@ -111,7 +111,7 @@ export const constantRoute = [
           title: '属性管理',
           hidden: false,
           icon: 'ChromeFilled',
-        }
+        },
       },
       {
         path: '/product/spu',
@@ -121,7 +121,7 @@ export const constantRoute = [
           title: 'spu管理',
           hidden: false,
           icon: 'Calendar',
-        }
+        },
       },
       {
         path: '/product/sku',
@@ -131,9 +131,9 @@ export const constantRoute = [
           title: 'SKU管理',
           hidden: false,
           icon: 'Orange',
-        }
+        },
       },
-    ]
+    ],
   },
   {
     path: '/404',
