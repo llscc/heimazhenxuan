@@ -1,7 +1,7 @@
 <template>
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div class="layout_slider">
+    <div class="layout_slider" :class="{fold:LayOutSettingStore.fold?true:false}">
       <Logo />
 
       <el-scrollbar class="scrollbar">
@@ -10,13 +10,14 @@
           background-color="#001529"
           text-color="white"
           active-text-color="yellowgreen"
+          :collapse="LayOutSettingStore.fold"
         >
           <Menu :menuList="useStore.menuRoutes"></Menu>
         </el-menu>
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
-    <div class="layout_tabbar">
+    <div class="layout_tabbar" :class="{fold:LayOutSettingStore.fold?true:false}">
       <Tabbar></Tabbar>
     </div>
     <!-- 内容展示区域 -->
@@ -36,10 +37,17 @@ import Tabbar from './tabbar/index.vue'
 
 //获取用户相关的小仓库
 import useUserStore from '@/store/modules/user'
+import useLayOutSettingStore from '@/store/modules/setting'
 let useStore = useUserStore()
-
+let LayOutSettingStore = useLayOutSettingStore()
 let $route = useRoute()
 console.log($route.path)
+</script>
+
+<script lang="ts">
+export default{
+  name:"Layout"
+}
 </script>
 
 <style lang="scss">
@@ -60,8 +68,12 @@ console.log($route.path)
       height: calc(100vh - $base-menu-logo-height);
 
       .el-menu {
-        border-right: none;
-      }
+                border-right: none;
+            }
+    }
+
+    &.fold {
+      width: 50px;
     }
   }
 
@@ -73,10 +85,10 @@ console.log($route.path)
     left: $base-menu-width;
     transition: all 0.3s;
 
-    // &.fold {
-    //     width: calc(100vw - $base-menu-min-width );
-    //     left: $base-menu-min-width;
-    // }
+    &.fold {
+        width: calc(100vw - $base-menu-min-width );
+        left: $base-menu-min-width;
+    }
   }
 
   .layout_main {
@@ -89,10 +101,10 @@ console.log($route.path)
     overflow: auto;
     transition: all 0.3s;
 
-    // &.fold {
-    //     width: calc(100vw - $base-menu-min-width );
-    //     left: $base-menu-min-width;
-    // }
+    &.fold {
+        width: calc(100vw - $base-menu-min-width );
+        left: $base-menu-min-width;
+    }
   }
 }
 </style>
