@@ -6,14 +6,14 @@
         :index="item.path"
         v-if="!item.meta.hidden"
         @click="goRoute"
-      > 
+      >
         <el-icon>
           <component :is="item.meta.icon"></component>
         </el-icon>
         <template #title>
           <span>{{ item.meta.title }}</span>
         </template>
-      </el-menu-item> 
+      </el-menu-item>
     </template>
 
     <!-- 只有一个子路由 -->
