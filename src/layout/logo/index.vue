@@ -10,8 +10,8 @@ import setting from '@/setting'
 </script>
 
 <script lang="ts">
-export default{
-  name:"Logo"
+export default {
+  name: 'Logo',
 }
 </script>
 

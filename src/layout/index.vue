@@ -1,7 +1,10 @@
 <template>
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div class="layout_slider" :class="{fold:LayOutSettingStore.fold?true:false}">
+    <div
+      class="layout_slider"
+      :class="{ fold: LayOutSettingStore.fold ? true : false }"
+    >
       <Logo />
 
       <el-scrollbar class="scrollbar">
@@ -17,7 +20,10 @@
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
-    <div class="layout_tabbar" :class="{fold:LayOutSettingStore.fold?true:false}">
+    <div
+      class="layout_tabbar"
+      :class="{ fold: LayOutSettingStore.fold ? true : false }"
+    >
       <Tabbar></Tabbar>
     </div>
     <!-- 内容展示区域 -->
@@ -45,8 +51,8 @@ console.log($route.path)
 </script>
 
 <script lang="ts">
-export default{
-  name:"Layout"
+export default {
+  name: 'Layout',
 }
 </script>
 
@@ -68,8 +74,8 @@ export default{
       height: calc(100vh - $base-menu-logo-height);
 
       .el-menu {
-                border-right: none;
-            }
+        border-right: none;
+      }
     }
 
     &.fold {
@@ -86,8 +92,8 @@ export default{
     transition: all 0.3s;
 
     &.fold {
-        width: calc(100vw - $base-menu-min-width );
-        left: $base-menu-min-width;
+      width: calc(100vw - $base-menu-min-width);
+      left: $base-menu-min-width;
     }
   }
 
@@ -102,8 +108,8 @@ export default{
     transition: all 0.3s;
 
     &.fold {
-        width: calc(100vw - $base-menu-min-width );
-        left: $base-menu-min-width;
+      width: calc(100vw - $base-menu-min-width);
+      left: $base-menu-min-width;
     }
   }
 }
