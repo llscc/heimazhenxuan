@@ -14,7 +14,7 @@ export const constantRoute = [
     component: () => import('@/layout/index.vue'),
     name: 'layout',
     meta: {
-      title: 'layout',
+      title: '',
       hidden: false,
       icon: 'Avatar',
     },
@@ -45,6 +45,8 @@ export const constantRoute = [
     path: '/acl',
     component: () => import('@/layout/index.vue'),
     name: 'Acl',
+    // 重定向到第一个子路由
+    redirect: '/acl/user',
     meta: {
       title: '权限管理',
       hidden: false,
