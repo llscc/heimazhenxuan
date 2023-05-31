@@ -7,18 +7,21 @@
 </template>
 
 <script setup lang="ts">
-import {watch,ref,nextTick} from 'vue'
-import useLayOutSettingStore from '@/store/modules/setting';
+import { watch, ref, nextTick } from 'vue'
+import useLayOutSettingStore from '@/store/modules/setting'
 
 let layOutSettingStore = useLayOutSettingStore()
 let flag = ref(true)
-watch(() => layOutSettingStore.refresh, () => {
-  flag.value = false
-  nextTick(() => { // 保证dom更新后再执行
-    flag.value = true
-  })
-})
-
+watch(
+  () => layOutSettingStore.refresh,
+  () => {
+    flag.value = false
+    nextTick(() => {
+      // 保证dom更新后再执行
+      flag.value = true
+    })
+  },
+)
 </script>
 
 <script lang="ts">

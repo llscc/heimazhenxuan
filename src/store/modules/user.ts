@@ -1,16 +1,19 @@
 import { defineStore } from 'pinia'
 import type { loginForm, loginResponseData } from '@/api/user/type'
-import { reqLogin } from '@/api/user'
+import { reqLogin ,reqUserInfo} from '@/api/user'
 import type { UserState } from './types/type'
 // 引入操作本地存储的方法
 import { SET_TOKEN, GET_TOKEN } from '@/utils/token'
 import { constantRoute } from '@/router/routes'
+import {REMOVE_TOKEN} from '@/utils/token'
 
 let useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN(),
       menuRoutes: constantRoute,
+      username: '',
+      avatar: '',
     }
   },
   actions: {
@@ -27,6 +30,21 @@ let useUserStore = defineStore('User', {
         return Promise.reject(new Error(result.data.message))
       }
     },
+
+    // 用户信息
+    async userInfo() {
+      let result = await reqUserInfo()
+      if(result.code === 200){
+        this.username = result.data.checkUser.username
+        this.avatar = result.data.checkUser.avatar
+      }
+    },
+    async userLogout() {
+      this.token = ''
+      this.username = ''
+      this.avatar = '',
+      REMOVE_TOKEN()
+    }
   },
   getters: {},
 })
